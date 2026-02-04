@@ -1,0 +1,11 @@
+class Solution:    
+    def findUnion(self, a, b):
+        # code here
+        res = []
+        a.extend(b)
+        a.sort()
+        res.append(a[0])
+        for i in range(1, len(a)):
+            if a[i] != a[i-1]:
+                res.append(a[i])
+        return res
