@@ -1,0 +1,14 @@
+class Solution:
+    def isCovered(self, ranges: List[List[int]], left: int, right: int) -> bool:
+        ranges.sort()
+        res = True
+        for i in range(left, right+1):
+            for j in range(len(ranges)):
+                if i < ranges[j][0] or i> ranges[j][1]:
+                    res = False
+                else:
+                    res = True
+                    break
+            if not res:
+                return False
+        return res
