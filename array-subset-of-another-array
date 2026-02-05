@@ -1,0 +1,17 @@
+from collections import Counter
+
+class Solution:
+    #Function to check if a is a subset of b.
+    def isSubset(self, a, b):
+        ac = Counter(a)
+        bc = Counter(b)
+        
+        n = len(bc)
+        if n > len(ac):
+            return False
+            
+        for key, value in bc.items():
+            if key not in ac or ac[key] < value:
+                return False
+        
+        return True
