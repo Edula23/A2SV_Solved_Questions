@@ -1,0 +1,30 @@
+class Solution:
+    def removeComments(self, source: List[str]) -> List[str]:
+        result = []
+        isCom = False
+        curr = ""
+
+        for line in source:
+            i = 0
+            while(i<len(line)):
+                if not isCom and line[i:i+2] == '//':   
+                    break
+                if not isCom and line[i:i+2] == '/*':
+                    isCom = True
+                    i+=2
+                    continue
+                if isCom and line[i:i+2] == '*/':
+                    isCom = False
+                    i+=2
+                    continue
+                if not isCom:
+                    curr += line[i]
+                i+=1
+            if not isCom and curr:
+                result.append(curr)
+                curr = ""            
+                
+                
+        return result
+
+            
