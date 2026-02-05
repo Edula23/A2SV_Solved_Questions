@@ -1,0 +1,14 @@
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        secret = list(secret)
+        guess = list(guess)
+        b = 0
+        c = 0
+        res = ""
+        for i in range(len(secret)):
+            if secret[i] == guess[i]:
+                b+=1
+            elif :
+                c+=1
+        res = str(b) + "A" + str(c) + "B"
+        return res
