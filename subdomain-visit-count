@@ -1,0 +1,37 @@
+from collections import defaultdict
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        result = []
+        mp = defaultdict(int)
+        for domain in cpdomains:
+            i = 0
+            num = ""
+            while(domain[i] != " "):
+                num+=domain[i]
+                i+=1
+            num = int(num)
+            mp[domain[i+1:len(domain)]] += num
+            print(domain[i+1:len(domain)])
+            j = i + 1
+            while(domain[j] != "."):
+                j += 1
+            if mp[domain[j+1:len(domain)]] == 0:
+                mp[domain[j+1:len(domain)]] += num
+            else:
+                mp[domain[j+1:len(domain)]] += num
+            print(domain[j+1:len(domain)])
+            j += 1
+            while(j<len(domain) and domain[j] != "."):
+                j+= 1
+            if "." in domain[j:len(domain)]:
+                if mp[domain[j+1:len(domain)]] == 0:
+                    mp[domain[j+1:len(domain)]] += num
+                else:
+                    mp[domain[j+1:len(domain)]] += num
+                print(domain[j+1:len(domain)])
+        for k, v in mp.items():
+            result.append(str(v) + " " + k) 
+        return result
+        
+
+            
