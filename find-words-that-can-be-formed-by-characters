@@ -1,0 +1,17 @@
+from collections import Counter
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        mp = Counter(chars)
+        total = 0
+        chars = list(chars)        
+        for i in range(len(words)):
+            found = True
+            for j in range(len(words[i])):
+                if words[i][j] in mp and words[i].count(words[i][j]) <= mp[words[i][j]]:
+                    found = True
+                else:
+                    found = False
+                    break
+            if found:
+                total += len(words[i])
+        return total
