@@ -1,0 +1,13 @@
+from collections import Counter, defaultdict
+n = int(input())
+for i in range(n):
+    lenStr = int(input())
+    strdom = str(input())
+    
+    ans = ["aa", "aba", "aca", "abca", "acba", "abbacca", "accabba"]
+    for a in ans:
+        if a in strdom:
+            print(len(a))
+            break
+    else:
+        print(-1)
