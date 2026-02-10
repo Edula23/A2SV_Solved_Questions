@@ -1,0 +1,13 @@
+class Solution:
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        res = []
+        i = 0
+        j = 0
+        while i < len(indices):            
+            if indices[j] == i:
+                res.append(s[j])
+                i+=1
+                j=0
+            else:
+                j += 1
+        return "".join(res)
