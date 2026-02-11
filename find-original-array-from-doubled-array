@@ -1,0 +1,28 @@
+from collections import Counter
+class Solution:
+    def findOriginalArray(self, changed: List[int]) -> List[int]:
+        n = len(changed)
+        if n % 2 != 0:
+            return []
+
+        changed.sort()
+        result = Counter()
+        counts = Counter(changed)
+        if counts[0] % 2 != 0:
+            return []
+        
+        for num in changed:
+            double = num * 2
+
+            if counts[num] > 0 and counts[double] > 0:
+                counts[double] -= 1
+                counts[num] -= 1
+                result[num] += 1
+            
+        answer = [
+            num 
+            for num in result 
+            for _ in range(result[num])
+        ]
+
+        return answer if len(answer) * 2 == n else []
