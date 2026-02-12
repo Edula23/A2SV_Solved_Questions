@@ -1,0 +1,18 @@
+from collections import Counter, defaultdict
+class Solution:
+    def minimumSwap(self, s1: str, s2: str) -> int:
+        if s1 == s2:
+            return 0
+        c_s1 = Counter(s1)
+        c_s2 = Counter(s2)
+        if (c_s1['x'] + c_s2['x']) % 2 != 0:
+            return -1
+        diff = defaultdict(int)
+        for i in range(len(s1)):
+            if s1[i] != s2[i]:
+                diff[s1[i]] += 1
+        
+        return ceil(diff['x']/2) + ceil(diff['y']/2)
+
+        
+       
