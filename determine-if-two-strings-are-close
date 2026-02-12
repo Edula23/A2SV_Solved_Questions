@@ -1,0 +1,22 @@
+from collections import Counter
+class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        if len(word1) != len(word2):
+            return False
+        c_word1 = Counter(word1)
+        c_word2 = Counter(word2)
+        f_word1 = Counter(c_word1.values())
+        f_word2 = Counter(c_word2.values())
+        print(f_word1, f_word2)
+        if c_word1 == c_word2:
+            return True
+        
+        for k, v in c_word2.items():
+            if k not in c_word1 or v not in c_word1.values():
+                return False
+        for k, v in c_word1.items():
+            if k not in c_word2 or v not in c_word2.values():
+                return False
+        if f_word1 != f_word2:
+            return False
+        return True
