@@ -1,0 +1,18 @@
+from collections import Counter
+from collections import defaultdict
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        mp = defaultdict(str)
+        listS = s.split()
+        listPat = list(pattern)
+        if len(listS) != len(listPat):
+            return False
+        for i in range(len(listPat)):
+            if mp[listPat[i]] == "" and listS[i] not in mp.values():
+                mp[listPat[i]] = listS[i]
+        print(mp)
+        for i in range(len(listS)):
+            if listS[i] != mp[listPat[i]]:
+                return False
+        return True
+        
