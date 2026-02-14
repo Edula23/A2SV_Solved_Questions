@@ -1,0 +1,23 @@
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        row = len(img)
+        col = len(img[0])
+        image = [[0] * col for _ in range(row)]
+
+        for r in range(row): 
+            for c in range(col):
+                u = max(0, r - 1)
+                d = min(r + 1, row - 1)
+                l = max(0, c - 1)
+                ri = min(c + 1, col - 1)
+
+                total = 0
+                for i in range(u, d + 1):
+                    for j in range(l, ri + 1):
+                        total += img[i][j]
+
+                new_row = d - u + 1
+                new_col = ri - l + 1
+                image[r][c] = total // (new_row * new_col)
+
+        return image
