@@ -1,0 +1,22 @@
+class Solution:
+    def flipAndInvertImage(self, image: List[List[int]]) -> List[List[int]]:
+        row = len(image)
+        col = len(image[0])
+        for r in range(row):
+            for c in range(ceil(col/2)):
+                if image[r][c] == 0:
+                    image[r][c] = 1
+                elif image[r][c] == 1:
+                    image[r][c] = 0
+                if col % 2 == 0 or (col % 2 != 0 and c !=ceil(col/2) - 1):
+                    if image[r][-(c+1)] == 0:
+                        image[r][-(c+1)] = 1
+                        image[r][c], image[r][-(c+1)] = image[r][-(c+1)], image[r][c]
+                    elif image[r][-(c+1)] == 1:
+                        image[r][-(c+1)] = 0
+                        image[r][c], image[r][-(c+1)] = image[r][-(c+1)], image[r][c]
+                    else:
+                        image[r][c], image[r][-(c+1)] = image[r][-(c+1)], image[r][c]
+        return image
+
+
