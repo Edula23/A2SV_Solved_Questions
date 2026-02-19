@@ -1,0 +1,10 @@
+noContest = int(input())
+contest = list(map(int, input().split()))
+contest.sort()
+days = 1
+res = 0
+for i in range(len(contest)):
+    if contest[i] >= days:
+        res += 1
+        days+=1
+print(res)
