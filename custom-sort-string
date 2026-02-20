@@ -1,0 +1,15 @@
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        res = []
+        count_s = Counter(s)
+        for c in order:
+            if count_s[c] > 0:
+                while count_s[c] > 0:
+                    res.append(c)
+                    count_s[c]-=1
+        for k, v in count_s.items():
+            if v > 0:
+                while count_s[k] > 0:
+                    res.append(k)
+                    count_s[k]-=1
+        return "".join(res)
