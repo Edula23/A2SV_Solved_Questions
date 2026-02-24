@@ -1,0 +1,55 @@
+from collections import Counter
+t= int(input())
+for _ in range(t):
+    s = input()
+    t = input()
+    list_t = list(t)
+    count_s = Counter(s)    
+    count_t = Counter(t)            
+    j = 0
+    i = 0
+    list_t.sort()
+    res = []
+    imposs = False
+    if len(s) > len(t):
+        imposs =True
+    if not imposs:
+        for k, v in count_s.items():
+            if count_t[k] < count_s[k]:
+                imposs = True
+                break
+    if not imposs:                        
+        while len(res) < len(t):
+                if j >= len(s) and i < len(t):
+                    res.append(list_t[i])
+                    i+=1
+                elif i >= len(t) and j < len(s):
+                    res.append(s[j])
+                    j+=1
+                elif list_t[i] < s[j] and count_t[list_t[i]] > count_s[list_t[i]]:
+                    res.append(list_t[i])
+                    count_t[list_t[i]] -= 1
+                    i+=1
+                elif list_t[i] > s[j]:
+                    res.append(s[j])
+                    count_t[s[j]] -= 1
+                    j+=1                
+                elif list_t[i] == s[j] and count_t[list_t[i]] >= count_s[list_t[i]]:
+                    res.append(list_t[i])
+                    count_t[list_t[i]] -= 1
+                    count_s[list_t[i]] -= 1
+                    j+=1
+                    i+=1
+                else:
+                    i+=1
+    if imposs:
+        print("Impossible")
+    else:
+        print("".join(res))
+            
+            
+
+            
+            
+    
+    
