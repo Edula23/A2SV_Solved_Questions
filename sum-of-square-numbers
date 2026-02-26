@@ -1,0 +1,19 @@
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        def isPerfectSquare(self, a: int)-> bool:
+            if a < 0:
+                return False
+            n = math.isqrt(a)
+            return n * n == a
+        j = 0
+        i = 0
+        while i <= c:
+            if isPerfectSquare(self, c-i):
+                return True
+            j += 1
+            i = j*j
+        return False
+                
+
+
+            
