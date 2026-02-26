@@ -1,0 +1,17 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    permut = list(map(int, input().split()))
+    res = []
+    maxSum = 0
+    curr = permut[0]
+    res.append(curr)
+    appended = False
+    for i in range(1, len(permut)):
+        if i < len(permut) - 1 and abs(permut[i]-permut[i-1]) + abs(permut[i]-permut[i+1]) > abs(permut[i-1]-permut[i+1]):
+            res.append(permut[i])
+        if i == len(permut) - 1:
+            res.append(permut[i])
+                            
+    print(len(res))
+    print(*res)
