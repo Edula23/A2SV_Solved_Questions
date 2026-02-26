@@ -1,0 +1,17 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        lastIndex = {}
+        res = []        
+        for i in range(len(s)):
+            lastIndex[s[i]] = i
+        last = lastIndex[s[0]]
+        first = 0
+        for i in range(len(s)):
+            if i == last:
+                res.append(last - first+1)
+                first = i + 1
+                if i+1 < len(s):
+                    last = lastIndex[s[i+1]]
+            elif lastIndex[s[i]] > last:
+                last = lastIndex[s[i]]
+        return res
