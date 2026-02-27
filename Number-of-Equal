@@ -1,0 +1,24 @@
+n, m = map(int,input().split())
+list1 = list(map(int,input().split()))
+list2 = list(map(int,input().split()))
+start = 0
+left = 0
+right = 0
+res = 0
+while left < len(list1) and right < len(list2):
+    if list1[left] < list2[right]:
+        left+=1
+    elif list2[right] < list1[left]:
+        right+=1
+    else:
+        countl = countr = 0
+        leftVal = list1[left]
+        rightVal = list2[right]
+        while left < len(list1) and list1[left] == leftVal:
+            left += 1
+            countl+=1
+        while right < len(list2) and list2[right] == rightVal:
+            right += 1
+            countr+=1
+        res += (countl * countr)
+print(res)
