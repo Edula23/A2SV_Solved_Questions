@@ -1,0 +1,16 @@
+from collections import defaultdict
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    cards = input()
+    count = defaultdict(int)
+    for i in range(k):
+        count[cards[i]] += 1
+    left = 0
+    minOp = k - count['B']
+    for right in range(k, len(cards)):
+        count[cards[right]] += 1
+        count[cards[left]] -= 1
+        minOp = min(minOp, k - count['B'])
+        left += 1
+    print(minOp)
