@@ -1,0 +1,12 @@
+n , s = map(int, input().split())
+nums = list(map(int, input().split()))
+left = 0
+summ = 0
+count = 0
+for right in range(n):
+    summ += nums[right]
+    while summ > s:        
+        summ -= nums[left]
+        left += 1
+    count += right - left + 1
+print(count)
