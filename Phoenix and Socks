@@ -1,0 +1,41 @@
+from collections import Counter
+t = int(input())
+for _ in range(t):
+    
+    n, l, r = map(int,input().split())
+    socks = list(map(int,input().split()))
+    
+    countL = [0] * (n + 1)
+    countR = [0] * (n + 1)
+    
+    for i in range(n):
+        if i < l:
+            countL[socks[i]] += 1
+        else:
+            countR[socks[i]] += 1
+    for i in range(1, n+1):
+        minum = min(countL[i], countR[i])
+        countL[i] -= minum
+        countR[i] -= minum
+        l-=minum
+        r-=minum
+    if l < r:
+        countL, countR = countR, countL
+        l, r = r, l
+    ans = 0
+
+    for i in range(1, n + 1):
+        extra = l - r  
+        if extra <= 0:
+            break
+        
+        canDo = countL[i] // 2
+        do = min(canDo * 2, extra)
+
+        ans += do // 2
+        l -= do
+
+    ans += (l - r) // 2
+    ans += (l + r) // 2
+
+    print(ans)
