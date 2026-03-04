@@ -1,0 +1,36 @@
+from collections import Counter
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = input()
+    b = input()
+    a = list(a)
+    b = list(b)
+    countA = Counter(a)
+    inverted = False
+    no = False
+    if a == b:
+        print("YES")
+    else:
+        for right in range(-1, -(n+1), -1):
+            if not inverted and a[right] != b[right]  and countA['0'] == countA['1']:
+                inverted = True
+            elif inverted and a[right] == b[right] and countA['0'] == countA['1']:
+                inverted = False
+            elif not inverted and countA['0'] != countA['1'] and a[right] != b[right]:
+                no = True
+                print("NO")
+                break
+            elif inverted and a[right] == b[right] and countA['0'] != countA['1']:
+                no = True
+                print("NO")
+                break
+            if inverted:
+                if a[right] == '1':
+                    countA['0'] -= 1
+                else:
+                    countA['1'] -= 1
+            else:
+                countA[a[right]] -= 1
+        if not no:
+            print("YES")
