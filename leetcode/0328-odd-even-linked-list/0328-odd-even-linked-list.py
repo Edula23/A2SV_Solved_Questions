@@ -11,8 +11,7 @@ class Solution:
         even = head.next
         headE = head.next
         
-        while even and even.next: 
-            print(odd.val, even.val)           
+        while even and even.next:      
             odd.next = odd.next.next
             even.next= even.next.next
             odd = odd.next
