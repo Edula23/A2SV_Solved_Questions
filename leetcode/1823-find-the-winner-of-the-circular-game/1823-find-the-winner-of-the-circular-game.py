@@ -8,9 +8,8 @@ class Solution:
         def helper(deleted, c):
             if len(deleted) == 1:
                 return deleted[0]
-            if c >= len(deleted):
-                while c >= len(deleted):
-                    c = c - len(deleted)
+            while c >= len(deleted):
+                c = c - len(deleted)
             deleted.pop(c)
             return helper(deleted, c+k-1)
         res = helper(deleted, k-1)
