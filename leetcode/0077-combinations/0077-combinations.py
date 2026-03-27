@@ -1,7 +1,6 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         def backTrack(num, path):
-            print(path)
             if len(path) == k:
                 ans.append(path[:])
                 return
