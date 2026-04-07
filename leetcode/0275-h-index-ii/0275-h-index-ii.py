@@ -5,7 +5,6 @@ class Solution:
             low, high = 0, len(citations)
             while low <= high:
                 mid = (low + high)//2
-                print(mid)
                 if mid < len(citations) and citations[mid] >= n:
                     high = mid - 1
                 else:
