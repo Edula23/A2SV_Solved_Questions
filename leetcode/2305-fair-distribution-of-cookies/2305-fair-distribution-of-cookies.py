@@ -1,20 +1,21 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
-        minUnf = float('inf')
-        dist = [0] * k
+        c = k * [0]
+        res = float('inf')
 
-        def backTrack(i):
-            nonlocal minUnf, dist
-
-            if i == len(cookies):
-                minUnf = min(minUnf, max(dist))
-                return
-            if minUnf <= max(dist):
+        def backTrack(n):
+            nonlocal res, c
+            if n == len(cookies):
+                res = min(res, max(c))
                 return 
+            if res <= max(c):
+                return
             for j in range(k):
-                dist[j] += cookies[i]
-                backTrack(i+1)
-                dist[j] -= cookies[i]
+                c[j] += cookies[n]
+                backTrack(n+1)
+                c[j] -= cookies[n]
         backTrack(0)
-        return minUnf
-        
+        return res
+
+
+
