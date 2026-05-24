@@ -3,11 +3,9 @@ class Solution:
         result = set()
 
         def backtrack(path, used):
-            # If we formed 3 digits
+
             if len(path) == 3:
                 num = int("".join(path))
-
-                # Must be even
                 if num % 2 == 0:
                     result.add(num)
 
@@ -16,8 +14,7 @@ class Solution:
             for i in range(len(digits)):
                 if used[i]:
                     continue
-
-                # No leading zero
+                    
                 if len(path) == 0 and digits[i] == 0:
                     continue
 
