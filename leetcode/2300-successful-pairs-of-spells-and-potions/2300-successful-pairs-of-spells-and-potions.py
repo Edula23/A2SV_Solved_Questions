@@ -10,7 +10,7 @@ class Solution:
                     low = mid + 1
                 else:
                     high = mid-1
-            return len(potions) - high -1
+            return len(potions) - low
 
         for i in range(len(spells)):
             pairs[i] = noSuccess(spells[i])
