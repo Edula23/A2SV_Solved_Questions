@@ -20,6 +20,6 @@ class Solution:
             for j in range(len(grid[0])):
                 if grid[i][j] == '1':
                     cnt += 1
-                dfs(grid, i, j)
+                    dfs(grid, i, j)
         return cnt
             
