@@ -6,10 +6,10 @@ class Solution:
             if len(grid) <= row or len(grid[0]) <= col or col < 0 or row < 0:
                 return True
         def dfs(grid, row, col):
-            if notinbound(grid, row, col) or grid[row][col] == '0':
+            if notinbound(grid, row, col) or grid[row][col] == '0' or grid[row][col] == '-1':
                 return
             newRow, newCol = 0, 0
-            grid[row][col] = '0'
+            grid[row][col] = '-1'
             for d in dir:
                 newRow = row + d[0]
                 newCol = col + d[1]
